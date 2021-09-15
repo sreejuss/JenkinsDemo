@@ -12,5 +12,21 @@ pipeline {
                 sh 'java HelloWorld'
             }
         }
+        
+        
+          stage('Sonarqube analysis') {
+            steps {
+                script {
+                    withSonarQubeEnv('sonar'){
+                        sh 'mvn sonar:sonar -DskipTests'
+                     }
+                 }
+            }
+        }
+
+        
+        
+        
+        
     }
 }
